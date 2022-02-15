@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DisplayWeightEntries from '../../Components/DisplayWeightEntries/DisplayWeightEntries';
 
 export default function WeightTracker() {
 
@@ -6,15 +7,7 @@ export default function WeightTracker() {
 
     return (
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Entry Number</th>
-                        <th>Weight</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-            </table>
+            <DisplayWeightEntries parentEntries={entries} />
         </div>
     );
 
