@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 
 const AddWeightEntry = (props) => {
@@ -6,15 +7,22 @@ const AddWeightEntry = (props) => {
     const [weight, setWeight] = useState(0);
     const [date, setDate] = useState('');
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         let newEntry = {
+            user: 4,
             weight: weight,
             date: date
         };
-        console.log(newEntry);
-        props.addNewEntry(newEntry)
+        // props.addNewEntry(newEntry)
+        let response = await axios.post('http://127.0.0.1:8000/bodyweights/add/', newEntry);
+        // setWeight(response.data)
+        // setDate(response.data)
+        props.getWeights();
     }
+
+
+
 
     return ( 
         <form onSubmit={handleSubmit}>
