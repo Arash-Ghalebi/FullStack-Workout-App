@@ -5,10 +5,13 @@ import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 export default class Calendar extends React.Component {
   render() {
     return (
-      <FullCalendar
+    <div>
+        <button>Add Event</button>
+        <FullCalendar
         plugins={[ dayGridPlugin ]}
         initialView="dayGridMonth"
-      />
+        />
+    </div>
     )
   }
 }
