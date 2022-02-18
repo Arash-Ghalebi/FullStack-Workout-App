@@ -1,25 +1,24 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import './AddWeightEntry.css';
 
 
-const AddWeightEntry = (props) => {
+const CalendarEntry = (props) => {
 
-    const [weight, setWeight] = useState(0);
+    const [text, setText] = useState(0);
     const [date, setDate] = useState('');
 
     async function handleSubmit(event) {
         event.preventDefault();
         let newEntry = {
             user: 4,
-            weight: weight,
+            text: text,
             date: date
         };
         // props.addNewEntry(newEntry)
-        let response = await axios.post('http://127.0.0.1:8000/bodyweights/add/', newEntry);
+        let response = await axios.post('http://127.0.0.1:8000/calendar/add/', newEntry);
         // setWeight(response.data)
         // setDate(response.data)
-        props.getWeights();
+        props.getEntries();
     }
 
 
@@ -27,8 +26,8 @@ const AddWeightEntry = (props) => {
 
     return ( 
         <form onSubmit={handleSubmit} className='form-grid'>
-            <label>Weight</label>
-            <input type='number' value={weight} onChange={(event) => setWeight(parseFloat(event.target.value))}/>
+            <label>Workout</label>
+            <input type='text' value={text} onChange={(event) => setText(event.target.value)}/>
             <label>Date</label>
             <input type='date' value={date} onChange={(event) => setDate(event.target.value)}/>
             <button type='submit'>Add</button>
@@ -36,4 +35,4 @@ const AddWeightEntry = (props) => {
      );
 }
  
-export default AddWeightEntry;
+export default CalendarEntry;

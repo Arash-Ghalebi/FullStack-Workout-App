@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 //import ExerciseListExamples from '../../Components/ExerciseListExamples/ExerciseListExamples';
 import axios from 'axios';
+import './ExerciseList.css'
 
 export default function ExerciseList() {
 
@@ -33,7 +34,7 @@ export default function ExerciseList() {
     
 
     return (
-        <div>
+        <div className='exer-list'>
             <button onClick={() => getExercises('back')}>Get Back Workouts</button>
             <button onClick={() => getExercises('lower arms')}>Get Lower Arm Workouts</button>
             <button onClick={() => getExercises('upper arms')}>Get Upper Arm Workouts</button>
@@ -44,7 +45,7 @@ export default function ExerciseList() {
             <button onClick={() => getExercises('upper legs')}>Get Upper Leg Workouts</button>
             <ul>
                 {info.map(entry => (
-                    <li>{entry.name} {entry.gifUrl}</li>
+                    <li>{entry.name} <img alt='swole-doge'  src={String(entry.gifUrl)} /></li>
                 ))}
             </ul>
                 
